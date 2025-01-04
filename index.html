@@ -6,11 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arlocal Dashboard</title>
     <style>
+      :root {
+        --accent-color: gray;
+      }
+
       body {
+        font-family: 'Courier New', Courier, monospace;
         background-color: black;
         color: white;
+        margin: 0 25px;
       }
-  
+
+      table, input, button {
+        border-radius: 5px;
+        padding: 5px;
+      }
+
+      button {
+        font-weight: bolder;
+      }
+
       @media (prefers-color-scheme: light) {
         body {
           background-color: white;

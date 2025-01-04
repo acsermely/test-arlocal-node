@@ -2,6 +2,7 @@
   import { getArlocalState } from "../state/arlocal.svelte";
 
 	const arnode = getArlocalState();
+	const showLen = 10;
 
 	function copy(text: string): void {
 		navigator.clipboard.writeText(text);
@@ -9,11 +10,13 @@
 
 </script>
 
+<h2>Transactions:</h2>
 <p>*click to copy fields</p>
 <table>
 	<thead>
 		<tr>
 			<th>Block</th>
+			<th>Type</th>
 			<th>Address</th>
 			<th>ID</th>
 		</tr>
@@ -22,8 +25,9 @@
 		{#each arnode.transactionHistory as item}
 		<tr>
 			<td>{item.block?.height || "pending"}</td>
-			<td class="copy" onclick={() => copy(item.owner.address)}>{item.owner.address.slice(0,20)}...</td>
-			<td class="copy" onclick={() => copy(item.id)}>{item.id.slice(0,20)}...</td>
+			<td>{item.tags?.find(item => item.name === "Type")?.value || "-"}</td>
+			<td class="copy" onclick={() => copy(item.owner.address)}>{item.owner.address.slice(0,showLen)}...</td>
+			<td class="copy" onclick={() => copy(item.id)}>{item.id.slice(0,showLen)}...</td>
 		</tr>
 		{/each}
 	</tbody>
@@ -32,7 +36,7 @@
 <style>
 	table {
 		width: 100%;
-		border: 1px solid gray;
+		border: 1px solid var(--accent-color);
 	}
 	td.copy {
 		cursor: pointer;
@@ -45,6 +49,6 @@
 	}
 	p {
 		margin: 0;
-		color: gray;
+		color: var(--accent-color);
 	}
 </style>
