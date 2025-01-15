@@ -8,6 +8,6 @@
 </script>
 
 <div>
-	<h2>Mint</h2>
-	<button onclick={onMine}>Mint new block</button>
+	<h2>Mine:</h2>
+	<button onclick={onMine}>Mine new block</button>
 </div>

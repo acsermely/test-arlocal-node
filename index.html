@@ -6,31 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arlocal Dashboard</title>
     <style>
-      :root {
-        --accent-color: gray;
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --accent-color: gray;
+          --primary-color: white;
+          --bg-color: black;
+          --active-color: skyblue;
+        }
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --accent-color: gray;
+          --primary-color: black;
+          --bg-color: white;
+          --active-color: skyblue;
+        }
       }
 
       body {
         font-family: 'Courier New', Courier, monospace;
-        background-color: black;
-        color: white;
-        margin: 0 25px;
+        background-color: var(--bg-color);
+        color: var(--primary-color);
       }
 
-      table, input, button {
+      table, input, button, .card {
+        padding: 10px;
         border-radius: 5px;
-        padding: 5px;
+        border-style: solid;
+        border-color: var(--accent-color);
+        border-width: 1px;
       }
 
       button {
-        font-weight: bolder;
+        border-width: 2px;
+        font-weight: 600;
+        cursor: pointer;
       }
-
-      @media (prefers-color-scheme: light) {
-        body {
-          background-color: white;
-          color: black;
-        }
+      button:active {
+        background-color: var(--active-color);
       }
     </style>
   </head>
